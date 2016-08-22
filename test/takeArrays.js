@@ -26,8 +26,6 @@ contract('TakeArrays', function(accounts) {
   it("should take in an array of addresses", function() {
     var takeArrays = TakeArrays.deployed();
 
-    console.log(accounts);
-
     return takeArrays.takeAddresses.call(accounts, { from: accounts[0] })
       .then(function (success) {
         assert.isTrue(success, "should be able to take an array");
@@ -41,7 +39,6 @@ contract('TakeArrays', function(accounts) {
       })
       .then(function (address0) {
         assert.equal(address0, accounts[accounts.length - 1], "should have taken in the last address");
-        console.log(address0);
       });
 
   });

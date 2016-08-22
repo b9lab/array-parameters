@@ -1,3 +1,7 @@
 module.exports = function(deployer) {
-  deployer.deploy(TakeArrays);
+	deployer.deploy([
+		TakeArrays,
+		AccessibleStruct,
+		BigStructHolder
+	]);
 };
