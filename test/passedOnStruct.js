@@ -1,8 +1,8 @@
 var PassedOnStruct = artifacts.require("./PassedOnStruct.sol");
 
-contract('PassedOnStruct', function(accounts) {
+contract('PassedOnStruct', accounts => {
 
-    it("should be possible to get values saved in AccessibleStruct", function() {
+    it("should be possible to get values saved in AccessibleStruct", () => {
         var passedOnStruct;
 
         return PassedOnStruct.deployed()
@@ -10,7 +10,7 @@ contract('PassedOnStruct', function(accounts) {
                 passedOnStruct = instance;
                 return passedOnStruct.getStruct.call(0);
             })
-            .then(function (variableLength) {
+            .then(variableLength => {
                 assert.equal(variableLength.length, 2, "should only have 2 values");
                 assert.equal(variableLength[0].valueOf(), 1, "should be get the 1st fixed length");
                 // In other words, the variable length field is missing
