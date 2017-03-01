@@ -1,4 +1,6 @@
-import "AccessibleStruct.sol";
+pragma solidity ^0.4.5;
+
+import "./AccessibleStruct.sol";
 
 contract PassedOnStruct {
 	AccessibleStruct accessibleStruct;
