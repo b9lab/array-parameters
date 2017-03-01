@@ -1,32 +1,15 @@
-web3.eth.getTransactionReceiptMined = function (txnHash, interval) {
-  var transactionReceiptAsync;
-  interval |= 500;
-  transactionReceiptAsync = function(txnHash, resolve, reject) {
-    try {
-      var receipt = web3.eth.getTransactionReceipt(txnHash);
-      if (receipt == null) {
-        setTimeout(function () {
-          transactionReceiptAsync(txnHash, resolve, reject);
-        }, 500);
-      } else {
-        resolve(receipt);
-      }
-    } catch(e) {
-      reject(e);
-    }
-  };
-
-  return new Promise(function (resolve, reject) {
-    transactionReceiptAsync(txnHash, resolve, reject);
-  });
-};
+var PassedOnStruct = artifacts.require("./PassedOnStruct.sol");
 
 contract('PassedOnStruct', function(accounts) {
 
   it("should be possible to get values saved in AccessibleStruct", function() {
-    var passedOnStruct = PassedOnStruct.deployed();
+    var passedOnStruct;
 
-    return passedOnStruct.getStruct.call(0)
+    return PassedOnStruct.deployed()
+      .then(instance => {
+        passedOnStruct = instance;
+        return passedOnStruct.getStruct.call(0);
+      })
       .then(function (variableLength) {
         assert.equal(variableLength.length, 2, "should only have 2 values");
         assert.equal(variableLength[0].valueOf(), 1, "should be get the 1st fixed length");
