@@ -4,10 +4,10 @@ var PassedOnStruct = artifacts.require("./PassedOnStruct.sol");
 var BigStructHolder = artifacts.require("./BigStructHolder.sol");
 
 module.exports = function(deployer) {
-	deployer.deploy([
-		TakeArrays,
-		AccessibleStruct,
-		PassedOnStruct,
-		BigStructHolder
-	]);
+    deployer.deploy([
+        TakeArrays,
+        AccessibleStruct,
+        PassedOnStruct,
+        BigStructHolder
+    ]);
 };
