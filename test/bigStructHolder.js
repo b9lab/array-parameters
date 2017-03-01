@@ -11,10 +11,10 @@ contract('BigStructHolder', accounts => {
                 return bigStructHolder.bigStruct14s(0);
             })
             .then(values => {
-                assert.equal(values.length, 14, "should have 14 values");
-                for (var index = 0; index < 14; index++) {
-                    assert.equal(values[index], index + 1, "should get the indexth value");
-                }
+                assert.strictEqual(values.length, 14, "should have 14 values");
+                values.forEach((value, index) => {
+                    assert.strictEqual(value.toNumber(), index + 1, "should get the indexth value");
+                });
             });
 
     });

@@ -18,7 +18,7 @@ contract('TakeArrays', accounts => {
                 return takeArrays.addresses(accounts.length - 1);
             })
             .then(address0 => {
-                assert.equal(address0, accounts[accounts.length - 1], "should have taken in the last address");
+                assert.strictEqual(address0, accounts[accounts.length - 1], "should have taken in the last address");
             });
 
     });
