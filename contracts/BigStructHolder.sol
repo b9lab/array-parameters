@@ -1,4 +1,4 @@
-pragma solidity ^0.4.5;
+pragma solidity ^0.4.15;
 
 contract BigStructHolder {
     struct BigStruct14 {
@@ -22,7 +22,7 @@ contract BigStructHolder {
 
     mapping (uint => BigStruct14) public bigStruct14s;
 
-    function BigStructHolder() {
+    function BigStructHolder() public {
         bigStruct14s[0].u01 =  1;
         bigStruct14s[0].u02 =  2;
         bigStruct14s[0].u03 =  3;

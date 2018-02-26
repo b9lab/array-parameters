@@ -1,4 +1,4 @@
-pragma solidity ^0.4.5;
+pragma solidity ^0.4.15;
 
 contract AccessibleStruct {
     struct DifferentLength {
@@ -9,7 +9,7 @@ contract AccessibleStruct {
 
     mapping(uint => DifferentLength) public variableLengths;
 
-    function AccessibleStruct() {
+    function AccessibleStruct() public {
         variableLengths[0].fixedLength = 1;
         variableLengths[0].variableLength.push(2);
         variableLengths[0].variableLength.push(3);
@@ -17,7 +17,7 @@ contract AccessibleStruct {
     }
 
     function getVariableLengthAt(uint index, uint innerIndex)
-        constant
+        constant public
         returns (uint) {
         return variableLengths[index].variableLength[innerIndex];
     }
